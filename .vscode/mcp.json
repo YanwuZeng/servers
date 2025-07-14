@@ -1,0 +1,107 @@
+{
+  "servers": {
+    "git": {
+        "command": "uvx",
+        "args": ["mcp-server-git"]
+    },
+    "toolfront": {
+      "command": "uvx", 
+      "args": [
+        "toolfront[all]",
+        "sqlite:///home/webapp/neverdone/backend/db.sqlite3"
+      ],
+      "env": {
+        "HTTP_PROXY": "http://192.168.6.66:10808",  // HTTP 代理
+        "HTTPS_PROXY": "http://192.168.6.66:10808", // HTTPS 代理
+        "NO_PROXY": "localhost,127.0.0.1"       // 排除代理的地址
+      }
+    },
+    "mysql": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--from",  // 保持窗口不关闭（调试用）
+        "mysql-mcp-server", 
+        "mysql_mcp_server"
+      ],
+      "env": {
+        "MYSQL_HOST": "192.168.1.48",
+        "MYSQL_PORT": "3306",
+        "MYSQL_USER": "root",
+        "MYSQL_PASSWORD": "123456",
+        "MYSQL_DATABASE": "lims"
+      }
+    },    
+    "sequential_thinking": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "env": {
+        "DISABLE_THOUGHT_LOGGING": "false",
+        "HTTP_PROXY": "http://192.168.6.66:10808",  // HTTP 代理
+        "HTTPS_PROXY": "http://192.168.6.66:10808", // HTTPS 代理
+        "NO_PROXY": "localhost,127.0.0.1"       // 排除代理的地址
+      }
+    },
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"],
+      "env": {
+        "HTTP_PROXY": "http://192.168.6.66:10808",  // HTTP 代理
+        "HTTPS_PROXY": "http://192.168.6.66:10808", // HTTPS 代理
+        "NO_PROXY": "localhost,127.0.0.1"       // 排除代理的地址
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/webapp/neverdone",
+      ],
+      "env": {
+        "HTTP_PROXY": "http://192.168.6.66:10808",  // HTTP 代理
+        "HTTPS_PROXY": "http://192.168.6.66:10808", // HTTPS 代理
+        "NO_PROXY": "localhost,127.0.0.1"       // 排除代理的地址
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--save-trace"
+      ],
+      "env": {
+        "HTTP_PROXY": "http://192.168.6.66:10808",  // HTTP 代理
+        "HTTPS_PROXY": "http://192.168.6.66:10808", // HTTPS 代理
+        "NO_PROXY": "localhost,127.0.0.1"       // 排除代理的地址
+      }
+    },
+    
+    "mcp-server-commands": {
+      "command": "npx",
+      "args": ["mcp-server-commands"]
+    },
+    
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"],
+      "env": {
+        "HTTP_PROXY": "http://192.168.6.66:10808",  // HTTP 代理
+        "HTTPS_PROXY": "http://192.168.6.66:10808", // HTTPS 代理
+        "NO_PROXY": "localhost,127.0.0.1"       // 排除代理的地址
+      }
+    }
+  }
+}
