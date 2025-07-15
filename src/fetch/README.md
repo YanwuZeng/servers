@@ -1,5 +1,5 @@
 # update by Yanwu Zeng
-- add support for higher httpx>=0.28.0
+- add support for httpx>=0.28.0
 
 # Fetch MCP Server
 
