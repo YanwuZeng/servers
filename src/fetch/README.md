@@ -1,3 +1,6 @@
+# update by Yanwu Zeng
+- add support for higher httpx>=0.28.0
+
 # Fetch MCP Server
 
 A Model Context Protocol server that provides web content fetching capabilities. This server enables LLMs to retrieve and process content from web pages, converting HTML to markdown for easier consumption.
